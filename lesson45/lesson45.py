@@ -8,23 +8,22 @@ def dic(string_list):
 
 def fib_dic(term_num):
     fib_dict = {}
-    for i in range(1, term_num+1):
-        if term_num == 0:
-            value = "0"
-        elif term_num == 1:
-            value = "1"
-        elif term_num > 1:
-            value = value[i-2] + value[i-1]
-        fib_dict[i] = value
+    a, b = 0, 1
+    for i in range(term_num+1):
+        fib_dict[i] = a
+        a, b = b, a + b
     return fib_dict
 
 string_wow = input("Enter your list of strings: ")
+string_list = string_wow.split(",")
 term_num = int(input("Enter your term number: "))
 
-string_list = string_wow.split(",")
 result = dic(string_list)
 result_fib = fib_dic(term_num)
+
+print("\nString Length:")
 for key, value in result.items():
-    print(f"{key}:{value}")
+    print(f"{key}: {value}")
+print("\nFibonacci Sequence:")
 for address, val in result_fib.items():
-    print(f"{address}:{val}")
+    print(f"term {address}: {val}")
